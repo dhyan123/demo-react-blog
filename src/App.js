@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
@@ -7,6 +7,8 @@ import reducers from './redux/index.js';
 import NavHeader from './base/NavHeader/NavHeader.js';
 import PageFooter from './base/PageFooter/PageFooter.js';
 import {Layout} from 'antd';
+// import Index from './views/Index/Index.js';
+import Register from './views/Register/Register.js'
 
 const {Header, Footer} = Layout;
 
@@ -44,7 +46,7 @@ class App extends Component {
               <NavHeader></NavHeader>
             </Header>
             <div style={{flex: 1}}>
-              
+              <Route path="/register" component={Register}/>
             </div>
             <Footer style={style.footerBg}>
               <PageFooter/>
