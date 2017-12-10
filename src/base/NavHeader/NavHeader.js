@@ -60,7 +60,7 @@ class NavHeader extends Component {
           style={style.menuRight}
         >
           <MenuItem>
-            <Link to="/longin">
+            <Link to="/login">
               <Icon type="login" /> 登陆
             </Link>
           </MenuItem>
