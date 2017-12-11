@@ -1,4 +1,5 @@
 #root {
+  min-width: 800px;
   min-height: 100%;
   position: relative;
   user-select: none;

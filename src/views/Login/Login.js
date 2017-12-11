@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {Layout, Form, Input, Icon, Button, Checkbox} from 'antd';
 
 const {Content}  = Layout;

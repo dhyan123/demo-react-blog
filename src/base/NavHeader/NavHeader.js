@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {Menu, Icon, Dropdown, Button, Avatar } from 'antd';
 import {connect} from 'react-redux';
 
@@ -13,6 +13,19 @@ const style = {
   menuRight: {
     lineHeight: '64px',
     float: 'right'
+  },
+  longinUser: {
+    float: 'right', 
+    display: 'flex',
+    alignItems: 'center',
+    margin: '0 30px', 
+    cursor: 'pointer'
+  },
+  loginTitle: {
+    color: '#fff', 
+    marginBottom: 0, 
+    lineHeight: '64px', 
+    margin: '0 10px'
   }
 };
 
@@ -39,16 +52,18 @@ const menuType = {
 @connect(
   state => state.userReducer
 )
+@withRouter
 class NavHeader extends Component {
   constructor(props) {
     super(props);
+    const pathname = this.props.location.pathname.substr(1);
     this.state = {
-      current: 'index'
+      current: !pathname ? 'index' : pathname
     };
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(e){
-    console.log(e.key);
+    // console.log(e.key);
     this.setState({
       current: e.key
     })
@@ -59,9 +74,9 @@ class NavHeader extends Component {
         overlay={menu}
         placement="bottomCenter"
       >
-        <div style={{float: 'right', display: 'flex', alignItems: 'center', margin: '0 30px', cursor: 'pointer'}}>
+        <div style={style.longinUser}>
           <Avatar icon="user" />
-          <h3 style={{color: '#fff', margin: 0, lineHeight: '64px', margin: '0 10px'}}>Admin</h3>
+          <h3 style={style.loginTitle}>Admin</h3>
         </div>
       </Dropdown>
     );
@@ -97,12 +112,12 @@ class NavHeader extends Component {
               <Icon type="home" /> 主页
             </Link>
           </MenuItem>
-          <MenuItem key="note">
-            <Link to="/note">
+          <MenuItem key="message">
+            <Link to="/message">
             <Icon type="heart-o" /> 留言
             </Link>
           </MenuItem>
-          <MenuItem key="serch">
+          <MenuItem key="search">
             <Link to="/search">
               <Icon type="search" /> 搜索
             </Link>
