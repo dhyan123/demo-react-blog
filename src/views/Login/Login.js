@@ -27,9 +27,6 @@ const style = {
   submitBtn: {
     width: '100%'
   },
-  loginForm: {
-    width: '100%;'
-  },
   forgot: {
     float: 'right'
   }
@@ -58,7 +55,7 @@ class Login extends Component {
         <Content style={style.content}>
           <div style={style.formContainer}>
             <h1 style={style.title}>用户登录</h1>
-            <Form onSubmit={this.userLogin} style={style.loginForm}>
+            <Form onSubmit={this.userLogin}>
               <FormItem>
                 {getFieldDecorator('userName', {
                   rules: [{ required: true, message: '请输入用户名!' }],
@@ -76,7 +73,7 @@ class Login extends Component {
               <FormItem>
                 {getFieldDecorator('remember', {
                   valuePropName: 'checked',
-                  initialValue: false,
+                  initialValue: true,
                 })(
                   <Checkbox>记住我</Checkbox>
                 )}
